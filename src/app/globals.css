@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background-color: #12201a;
+  color: #f5f1e6;
+}
+
+::selection {
+  background-color: #c9a227;
+  color: #12201a;
+}
+
+/* Visible, on-brand focus states for every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #c9a227;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Reveal utility — GSAP toggles this via a data attribute; default state is
+   visible so content never depends on JS to appear. */
+[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.eyebrow {
+  font-family: var(--font-inter);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Horizontal scroller fallback (reduced motion / no-JS) — a native
+   scroll-snap row so Signature Dishes is always reachable without GSAP. */
+.dish-scroll {
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+.dish-scroll > * {
+  scroll-snap-align: start;
+}
